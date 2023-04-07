@@ -17,12 +17,14 @@
     object-fit: cover;
     border-radius: 10px;
     margin-bottom: 1rem;
+    
   }
-  
+
   .card h2 {
     margin: 0;
     font-size: 1.5rem;
     color: black;
+    cursor: pointer;
   }
   
   .card p {

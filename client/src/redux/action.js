@@ -8,7 +8,9 @@ import {
   ORDER_DOGS_NAME_DESC,
   ORDER_DOGS_WEIGHT_ASC,
   ORDER_DOGS_WEIGHT_DESC,
-  FILTER_BY_TEMPERAMENT
+  FILTER_BY_TEMPERAMENT,
+  GET_DOGS_BY_NAME,
+  CHANGE_PAGE
 } from "./types";
 
 export const getTemperaments = () => {
@@ -85,5 +87,27 @@ export const OrderByWeight = (order) => {
 
 
 export const filterByTemperament =(temp) =>{
+  
   return {type: FILTER_BY_TEMPERAMENT ,payload: temp};
+}
+
+
+
+export const getDogByName = (origin, dogName) => {
+  try {
+    return async (dispatch) => {
+      const { data } = await axios.get(`http://localhost:3001/dogs/name?origin=${origin}&dogName=${dogName}`);
+      return dispatch({
+        type: GET_DOGS_BY_NAME,
+        payload: data,
+      });
+    };
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+
+export const changePage = (page) =>{
+  return{type: CHANGE_PAGE, payload:page}
 }

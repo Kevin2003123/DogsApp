@@ -8,12 +8,15 @@ import {
   ORDER_DOGS_WEIGHT_ASC,
   ORDER_DOGS_WEIGHT_DESC,
   FILTER_BY_TEMPERAMENT,
+  GET_DOGS_BY_NAME,
+  CHANGE_PAGE,
 } from "./types";
 
 const initialState = {
   temperaments: [],
   dogs: [],
-  allDogs:[]
+  allDogs: [],
+  dogsFilter: [],
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -21,7 +24,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case GET_TEMPERAMENTS:
       return { ...state, temperaments: [...payload] };
     case GET_DOGS_API_DB:
-      return { ...state, dogs: [...payload], allDogs: [...payload] } ;
+      return { ...state, dogs: [...payload], allDogs: [...payload] };
     case GET_DOGS_API:
       return { ...state, dogs: [...payload], allDogs: [...payload] };
     case GET_DOGS_DB:
@@ -57,13 +60,22 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         dogs: [...state.allDogs].filter((x) => {
           if (x.hasOwnProperty("origin")) {
-            console.log("probando");
             if (x.temperament === undefined) return false;
             else return x.temperament.split(", ").includes(payload);
           } else {
             return x.Temperaments.map((x) => x.name).includes(payload);
           }
         }),
+      };
+    case GET_DOGS_BY_NAME:
+      return { ...state, dogs: payload };
+
+    case CHANGE_PAGE:
+      return {
+        ...state,
+        dogsFilter: state.dogs.filter(
+          (x, i) => i >= (payload - 1) * 8 && i < (payload - 1) * 8 + 8
+        ),
       };
     default:
       return state;

@@ -1,64 +1,97 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 70px;
-    background-color: #3f51b5;
-    color: #fff;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  background-color: #3f51b5;
+  color: #fff;
+  width: 100%;
+}
+
+.logo {
+  margin-left: 20px;
+  font-size: 24px;
+  background-image: url('../../assets//pngegg.png');
+  background-position: center;
+  background-size: contain; 
+  width: 60px;
+  height: 60px;
+  background-color: #fff; 
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3); 
+  transition: all 0.3s ease-in-out; 
   }
   
-  .logo {
-    margin-left: 20px;
-    font-size: 24px;
-    background-image: url('../../assets//pngegg.png');
-    background-position: center;
-    background-size: cover;
-    width: 70px;
-    height: 60px;
+  .logo:hover {
+  transform: scale(1.1); 
+  box-shadow: 0 0 20px rgba(0,0,0,0.5); 
   }
-  
+
   .new-dog-button {
     margin-right: 20px;
     margin-left: 20px;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
+    padding: 10px 16px;
     background-color: #fff;
     color: #3f51b5;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
-    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
   }
   
   .new-dog-button:hover {
-    background-color: #e0e0e0;
+    background-color: #5c6bc0;
+    color: #fff;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
   }
-  
-  .search-bar {
-    width: 300px;
-    margin-left: 20px;
-    padding: 8px;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
+
+.selectors {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.selectors label {
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.selectors select {
+  margin-right: 20px;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1264px) {
+  .navbar {
+    height: auto;
+    flex-direction: column;
   }
-  
+
+  .logo {
+    margin-bottom: 10px;
+  }
+
   .selectors {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
+    margin: 0;
+    flex-wrap: wrap;
   }
-  
-  .selectors label {
-    margin-right: 10px;
-    font-size: 14px;
-  }
-  
+
+  .selectors label,
   .selectors select {
-    margin-right: 20px;
-    padding: 8px;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
+    margin-right: 0;
+    margin-bottom: 10px;
+    width: 100%;
   }
+
+  .new-dog-button {
+    margin: 10px 0;
+  }
+}

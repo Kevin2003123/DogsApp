@@ -12,7 +12,7 @@ const getDogByIdRace = async (req, res) => {
         `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`
       );
       const detail = result.data.filter((x) => x.id === Number(idRaza))[0];
-      const { id, image, name, height, weight, Temperament, life_span } =
+      const { id, image, name, height, weight, temperament, life_span } =
         detail;
       res.status(200).json({
         id,
@@ -20,7 +20,7 @@ const getDogByIdRace = async (req, res) => {
         name,
         height: height.metric,
         weight: weight.metric,
-        Temperament,
+        temperament,
         life_span,
         origin: 'api'
       });
