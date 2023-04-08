@@ -5,54 +5,55 @@
   height: 70px;
   background-color: #3f51b5;
   color: #fff;
-  width: 100%;
+  width: 100vw;
 }
 
 .logo {
   margin-left: 20px;
   font-size: 24px;
-  background-image: url('../../assets//pngegg.png');
+  background-image: url("../../assets//pngegg.png");
   background-position: center;
-  background-size: contain; 
+  background-size: contain;
   width: 60px;
   height: 60px;
-  background-color: #fff; 
+  background-color: #fff;
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3); 
-  transition: all 0.3s ease-in-out; 
-  }
-  
-  .logo:hover {
-  transform: scale(1.1); 
-  box-shadow: 0 0 20px rgba(0,0,0,0.5); 
-  }
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
 
-  .new-dog-button {
-    margin-right: 20px;
-    margin-left: 20px;
-    padding: 10px 16px;
-    background-color: #fff;
-    color: #3f51b5;
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: none;
-    border: none;
-    border-radius: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .new-dog-button:hover {
-    background-color: #5c6bc0;
-    color: #fff;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-  }
+.logo:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.new-dog-button {
+  margin-right: 30px;
+  margin-left: 20px;
+  padding: 10px 16px;
+  background-color: #fff;
+  color: #3f51b5;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.new-dog-button:hover {
+  background-color: #5c6bc0;
+  color: #fff;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
 
 .selectors {
   display: flex;
   align-items: center;
   margin-right: 20px;
+  flex-wrap: wrap;
 }
 
 .selectors label {
@@ -67,9 +68,10 @@
   border-radius: 4px;
   font-size: 14px;
   cursor: pointer;
+  width: fit-content;
 }
 
-@media only screen and (max-width: 1264px) {
+@media only screen and (max-width: 1203px) {
   .navbar {
     height: auto;
     flex-direction: column;
@@ -80,8 +82,10 @@
   }
 
   .selectors {
+    display: flex;
     margin: 0;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   .selectors label,

@@ -22,7 +22,7 @@ const getDogByIdRace = async (req, res) => {
         weight: weight.metric,
         temperament,
         life_span,
-        origin: 'api'
+        origin: "api",
       });
     } else {
       const result2 = await Dog.findByPk(Number(idRaza), {

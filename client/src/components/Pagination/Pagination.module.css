@@ -16,6 +16,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease-in-out; 
+  margin-bottom: 30px;
 }
 
 .prev:hover,

@@ -19,13 +19,11 @@ const getDogs = async (req, res) => {
           name,
           temperament,
           weight: weight.metric,
-          origin: 'api'
+          origin: "api",
         };
       });
       res.status(200).json(result);
-    }
-
-    else if(origin=== 'db'){
+    } else if (origin === "db") {
       const result2 = await Dog.findAll({
         attributes: { exclude: ["height", "life_span"] },
         include: [
@@ -36,12 +34,10 @@ const getDogs = async (req, res) => {
           },
         ],
       });
-      
-      res.status(200).json(result2);
-    }
 
-    else{
-      const result3 =  await Dog.findAll({
+      res.status(200).json(result2);
+    } else {
+      const result3 = await Dog.findAll({
         attributes: { exclude: ["height", "life_span"] },
         include: [
           {
@@ -50,7 +46,7 @@ const getDogs = async (req, res) => {
             through: { attributes: [] },
           },
         ],
-      }); 
+      });
 
       const { data } = await axios.get(
         `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`
@@ -64,15 +60,12 @@ const getDogs = async (req, res) => {
           name,
           temperament,
           weight: weight.metric,
-          origin:'api'
+          origin: "api",
         };
       });
 
-
-      res.status(200).json([...result3,...result4]);
+      res.status(200).json([...result3, ...result4]);
     }
-    
-
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

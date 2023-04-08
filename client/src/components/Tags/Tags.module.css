@@ -1,28 +1,27 @@
 .tag {
-    display: flex;
-    align-items: center;
-    background-color: #eee;
-    border-radius: 5px;
-    padding: 5px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-  }
-  
-  .tag-remove {
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #FF5733;
-    color: #fff;
-    font-size: 12px;
-    line-height: 12px;
-    width: 12px;
-    height: 12px;
-    text-align: center;
-    margin-left: 5px;
+  display: flex;
+  align-items: center;
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
 
-  }
-  .tag-remove:hover {
-    background-color: #999;
-  }
+.tag-remove {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ff5733;
+  color: #fff;
+  font-size: 12px;
+  line-height: 12px;
+  width: 12px;
+  height: 12px;
+  text-align: center;
+  margin-left: 5px;
+}
+.tag-remove:hover {
+  background-color: #999;
+}

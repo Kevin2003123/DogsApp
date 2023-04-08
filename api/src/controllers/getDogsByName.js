@@ -25,7 +25,7 @@ const getDogsByName = async (req, res) => {
           weight: weight.metric,
           Temperament,
           life_span,
-          origin: 'api'
+          origin: "api",
         };
       });
       if (response.length > 0) res.status(200).json(response);
@@ -47,8 +47,7 @@ const getDogsByName = async (req, res) => {
       });
       if (response2.length > 0) res.status(200).json(response2);
       else res.status(404).json("no se encontraron ninguna coincidencia");
-    }else{
-
+    } else {
       const { data } = await axios.get(
         `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`
       );
@@ -66,10 +65,10 @@ const getDogsByName = async (req, res) => {
           weight: weight.metric,
           Temperament,
           life_span,
-          origin: 'api'
+          origin: "api",
         };
       });
- 
+
       const response2 = await Dog.findAll({
         where: {
           name: {
@@ -84,10 +83,10 @@ const getDogsByName = async (req, res) => {
           },
         ],
       });
-      
-      if(response.length>0 || response2.length>0) res.status(200).json([...response,...response2])
-      else res.status(404).json('Not found')
 
+      if (response.length > 0 || response2.length > 0)
+        res.status(200).json([...response, ...response2]);
+      else res.status(404).json("Not found");
     }
   } catch (error) {
     res.status(500).json({ error: error.message });

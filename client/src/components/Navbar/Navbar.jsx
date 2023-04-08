@@ -54,9 +54,9 @@ const Navbar = () => {
     if (selectValue !== "0") dispatch(filterByTemperament(selectValue));
   };
 
-  const handleClick =()=> {
+  const handleClick = () => {
     window.location.reload();
-  }
+  };
 
   return (
     <div className={s.navbar}>
@@ -92,9 +92,12 @@ const Navbar = () => {
             </option>
           ))}
         </select>
-        <SearchBar origin={origin} />
-        <Link to="/dogForm" className={s["new-dog-button"]}>Nuevo perro</Link>
+        <SearchBar className={s.search} origin={origin} />
       </div>
+
+      <Link to="/dogForm" className={s["new-dog-button"]}>
+        Nuevo perro
+      </Link>
     </div>
   );
 };
