@@ -126,12 +126,13 @@ const DogsForm = () => {
             type="text"
             id="name"
             value={name}
+            placeholder="Dog breed"
             onChange={(event) => setName(event.target.value)}
           />
         </div>
         <span>{validation.name}</span>
         <div className={s["form-group"]}>
-          <label htmlFor="minHeight">Min height:</label>
+          <label htmlFor="minHeight">Min height &#40;cm&#41;:</label>
           <input
             type="number"
             id="minHeight"
@@ -141,7 +142,7 @@ const DogsForm = () => {
         </div>
 
         <div className={s["form-group"]}>
-          <label htmlFor="maxHeight">Max height:</label>
+          <label htmlFor="maxHeight">Max height &#40;cm&#41;:</label>
           <input
             type="number"
             id="maxHeight"
@@ -151,7 +152,7 @@ const DogsForm = () => {
         </div>
         <span>{validation.height}</span>
         <div className={s["form-group"]}>
-          <label htmlFor="minWeight">Min weight:</label>
+          <label htmlFor="minWeight">Min weight &#40;kg&#41;:</label>
           <input
             type="number"
             id="minWeight"
@@ -161,7 +162,7 @@ const DogsForm = () => {
         </div>
 
         <div className={s["form-group"]}>
-          <label htmlFor="maxWeight">Max weight:</label>
+          <label htmlFor="maxWeight">Max weight &#40;kg&#41;:</label>
           <input
             type="number"
             id="maxWeight"
@@ -171,7 +172,7 @@ const DogsForm = () => {
         </div>
         <span>{validation.weight}</span>
         <div className={s["form-group"]}>
-          <label htmlFor="minLife">Min Life:</label>
+          <label htmlFor="minLife">Min Life &#40;years&#41;:</label>
           <input
             type="number"
             id="minLife"
@@ -181,7 +182,7 @@ const DogsForm = () => {
         </div>
 
         <div className={s["form-group"]}>
-          <label htmlFor="maxLife">Max life:</label>
+          <label htmlFor="maxLife">Max life &#40;years&#41;:</label>
           <input
             type="number"
             id="maxLife"

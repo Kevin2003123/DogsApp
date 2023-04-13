@@ -54,8 +54,8 @@ const CardDetail = () => {
             {id}
           </h2>
           <h2>{detail.name}</h2>
-          <p>Height: {detail.height}</p>
-          <p>Weight: {detail.weight}</p>
+          <p>Height: {detail.height} cm</p>
+          <p>Weight: {detail.weight} kg</p>
           <p>Lifespan: {detail.life_span}</p>
           <p>Temperaments: {detail.temperaments}</p>
         </div>

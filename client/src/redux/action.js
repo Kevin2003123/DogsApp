@@ -17,7 +17,6 @@ export const getTemperaments = () => {
   try {
     return async (dispatch) => {
       const { data } = await axios.get("http://localhost:3001/temperaments");
-      console.log(data);
       return dispatch({
         type: GET_TEMPERAMENTS,
         payload: data,
@@ -34,7 +33,6 @@ export const getDogApiDB = () => {
       const { data } = await axios.get(
         "http://localhost:3001/dogs?origin=db+api"
       );
-      console.log(data);
       return dispatch({
         type: GET_DOGS_API_DB,
         payload: data,
@@ -49,7 +47,6 @@ export const getDogApi = () => {
   try {
     return async (dispatch) => {
       const { data } = await axios.get("http://localhost:3001/dogs?origin=api");
-      console.log(data);
       return dispatch({
         type: GET_DOGS_API,
         payload: data,
@@ -64,7 +61,6 @@ export const getDogDb = () => {
   try {
     return async (dispatch) => {
       const { data } = await axios.get("http://localhost:3001/dogs?origin=db");
-      console.log(data);
       return dispatch({
         type: GET_DOGS_DB,
         payload: data,
