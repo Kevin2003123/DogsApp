@@ -10,7 +10,7 @@ const DogsForm = () => {
   const history = useHistory();
   useEffect(() => {
     dispatch(getTemperaments());
-  }, []);
+  }, [dispatch]);
   const temperamentsList = useSelector((state) => state.temperaments);
   const [name, setName] = useState("");
   const [minHeight, setMinHeight] = useState(0);
@@ -57,21 +57,21 @@ const DogsForm = () => {
     else newValidation.name = "";
     if (
       Number(minHeight) > Number(maxHeight) ||
-      minHeight == 0 ||
-      maxHeight == 0
+      minHeight === 0 ||
+      maxHeight === 0
     )
       newValidation.height =
         "Height can't be 0 and min height cant't be greater or equal than max height";
     else newValidation.height = "";
     if (
       Number(minWeight) > Number(maxWeight) ||
-      minWeight == 0 ||
-      maxWeight == 0
+      minWeight === 0 ||
+      maxWeight === 0
     )
       newValidation.weight =
         "Weight can't be 0 and min weight cant't be greater or equal than max weight";
     else newValidation.weight = "";
-    if (Number(minLife) > Number(maxLife) || minLife == 0 || maxLife == 0)
+    if (Number(minLife) > Number(maxLife) || minLife === 0 || maxLife === 0)
       newValidation.life =
         "Life can't be 0 and min life cant't be greater or equal than max life";
     else newValidation.life = "";

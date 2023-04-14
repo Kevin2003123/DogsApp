@@ -4,18 +4,20 @@ import { useSelector, useDispatch } from "react-redux";
 import { changePage } from "../../redux/action.js";
 
 const Pagination = () => {
-  const dogs = useSelector((state) => state.dogs);
+  const order = useSelector((state) => state.order);
+  const filter= useSelector((state) => state.filter)
+  const filterStatus= useSelector((state) => state.filterStatus)
   const dogsFilter = useSelector((state) => state.dogsFilter);
   const dispatch = useDispatch();
   let [page, setPage] = useState(1);
   useEffect(() => {
     dispatch(changePage(page));
-  }, [page]);
+  }, [page,dispatch]);
 
   useEffect(() => {
     dispatch(changePage(1));
     setPage(1);
-  }, [dogs]);
+  }, [order,filter,filterStatus,dispatch]);
 
   const prevHandler = () => {
     if (page !== 1) {
@@ -25,7 +27,7 @@ const Pagination = () => {
   };
 
   const nextHandler = () => {
-    if (dogsFilter[dogsFilter.length - 1] !== dogs[dogs.length - 1]) {
+    if (dogsFilter[dogsFilter.length - 1] !== (!filterStatus?order[order.length - 1]: filter[filter.length - 1])) {
       setPage(page + 1);
       window.scrollTo(0, 0);
     }

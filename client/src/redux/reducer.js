@@ -10,13 +10,19 @@ import {
   FILTER_BY_TEMPERAMENT,
   GET_DOGS_BY_NAME,
   CHANGE_PAGE,
+  FILTER_DOGS_API,
+  FILTER_DOGS_DB,
+  FILTER_DOGS_API_DB,
+  SET_FILTER,
 } from "./types";
 
 const initialState = {
   temperaments: [],
-  dogs: [],
+  order: [],
+  filter: [],
   allDogs: [],
   dogsFilter: [],
+  filterStatus: false,
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -24,25 +30,39 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case GET_TEMPERAMENTS:
       return { ...state, temperaments: [...payload] };
     case GET_DOGS_API_DB:
-      return { ...state, dogs: [...payload], allDogs: [...payload] };
+      return { ...state, allDogs: [...payload] };
+    case FILTER_DOGS_API_DB:
+      return { ...state, filter: state.order };
+    case FILTER_DOGS_DB:
+      return {
+        ...state,
+        filter: state.order.filter((x) => !x.hasOwnProperty("origin")),
+      };
+    case FILTER_DOGS_API:
+      return {
+        ...state,
+        filter: state.order.filter((x) => x.hasOwnProperty("origin")),
+      };
+    case SET_FILTER:
+      return { ...state, filterStatus: payload };
     case GET_DOGS_API:
-      return { ...state, dogs: [...payload], allDogs: [...payload] };
+      return { ...state, allDogs: [...payload] };
     case GET_DOGS_DB:
-      return { ...state, dogs: [...payload], allDogs: [...payload] };
+      return { ...state, allDogs: [...payload] };
     case ORDER_DOGS_NAME_ASC:
       return {
         ...state,
-        dogs: [...state.allDogs].sort((a, b) => a.name.localeCompare(b.name)),
+        order: [...state.allDogs].sort((a, b) => a.name.localeCompare(b.name)),
       };
     case ORDER_DOGS_NAME_DESC:
       return {
         ...state,
-        dogs: [...state.allDogs].sort((a, b) => b.name.localeCompare(a.name)),
+        order: [...state.allDogs].sort((a, b) => b.name.localeCompare(a.name)),
       };
     case ORDER_DOGS_WEIGHT_ASC:
       return {
         ...state,
-        dogs: [...state.allDogs].sort(
+        order: [...state.allDogs].sort(
           (a, b) =>
             Number(a.weight.split(" - ")[0]) - Number(b.weight.split(" - ")[0])
         ),
@@ -50,7 +70,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case ORDER_DOGS_WEIGHT_DESC:
       return {
         ...state,
-        dogs: [...state.allDogs].sort(
+        order: [...state.allDogs].sort(
           (a, b) =>
             Number(b.weight.split(" - ")[0]) - Number(a.weight.split(" - ")[0])
         ),
@@ -58,7 +78,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case FILTER_BY_TEMPERAMENT:
       return {
         ...state,
-        dogs: [...state.allDogs].filter((x) => {
+        filter: [...state.order].filter((x) => {
           if (x.hasOwnProperty("origin")) {
             if (x.temperament === undefined) return false;
             else return x.temperament.split(", ").includes(payload);
@@ -68,15 +88,22 @@ const rootReducer = (state = initialState, { type, payload }) => {
         }),
       };
     case GET_DOGS_BY_NAME:
-      return { ...state, dogs: payload };
+      return { ...state, filter: payload };
 
     case CHANGE_PAGE:
-      return {
-        ...state,
-        dogsFilter: state.dogs.filter(
-          (x, i) => i >= (payload - 1) * 8 && i < (payload - 1) * 8 + 8
-        ),
-      };
+      return !state.filterStatus
+        ? {
+            ...state,
+            dogsFilter: state.order.filter(
+              (x, i) => i >= (payload - 1) * 8 && i < (payload - 1) * 8 + 8
+            ),
+          }
+        : {
+            ...state,
+            dogsFilter: state.filter.filter(
+              (x, i) => i >= (payload - 1) * 8 && i < (payload - 1) * 8 + 8
+            ),
+          };
     default:
       return state;
   }

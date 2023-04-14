@@ -10,26 +10,49 @@ import {
   ORDER_DOGS_WEIGHT_DESC,
   FILTER_BY_TEMPERAMENT,
   GET_DOGS_BY_NAME,
-  CHANGE_PAGE
+  CHANGE_PAGE,
+  FILTER_DOGS_API,
+  FILTER_DOGS_DB,
+  FILTER_DOGS_API_DB,
+  SET_FILTER
+  
 } from "./types";
 
+
+export const filterDogsApi = ()=>{
+    return {type: FILTER_DOGS_API}
+}
+
+export const filterDogsApiDb= ()=>{
+  return {type: FILTER_DOGS_API_DB}
+}
+
+export const filterDogsDb= ()=>{
+  return {type: FILTER_DOGS_DB}
+}
+
+export const setFilter= (filter)=>{
+  return {type: SET_FILTER, payload: filter}
+}
+
+
 export const getTemperaments = () => {
-  try {
-    return async (dispatch) => {
+  return async (dispatch) => {
+    try {
       const { data } = await axios.get("http://localhost:3001/temperaments");
       return dispatch({
         type: GET_TEMPERAMENTS,
         payload: data,
       });
-    };
-  } catch (error) {
-    console.log(error.message);
-  }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 };
 
 export const getDogApiDB = () => {
-  try {
-    return async (dispatch) => {
+  return async (dispatch) => {
+    try {
       const { data } = await axios.get(
         "http://localhost:3001/dogs?origin=db+api"
       );
@@ -37,38 +60,38 @@ export const getDogApiDB = () => {
         type: GET_DOGS_API_DB,
         payload: data,
       });
-    };
-  } catch (error) {
-    console.log(error.message);
-  }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 };
 
 export const getDogApi = () => {
-  try {
-    return async (dispatch) => {
+  return async (dispatch) => {
+    try {
       const { data } = await axios.get("http://localhost:3001/dogs?origin=api");
       return dispatch({
         type: GET_DOGS_API,
         payload: data,
       });
-    };
-  } catch (error) {
-    console.log(error.message);
-  }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 };
 
 export const getDogDb = () => {
-  try {
-    return async (dispatch) => {
+  return async (dispatch) => {
+    try {
       const { data } = await axios.get("http://localhost:3001/dogs?origin=db");
       return dispatch({
         type: GET_DOGS_DB,
         payload: data,
       });
-    };
-  } catch (error) {
-    console.log(error.message);
-  }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 };
 
 export const OrderByName = (order) => {
@@ -81,29 +104,29 @@ export const OrderByWeight = (order) => {
   else return { type: ORDER_DOGS_WEIGHT_DESC };
 };
 
-
-export const filterByTemperament =(temp) =>{
-  
-  return {type: FILTER_BY_TEMPERAMENT ,payload: temp};
-}
-
-
+export const filterByTemperament = (temp) => {
+  return { type: FILTER_BY_TEMPERAMENT, payload: temp };
+};
 
 export const getDogByName = (origin, dogName) => {
-  try {
-    return async (dispatch) => {
-      const { data } = await axios.get(`http://localhost:3001/dogs/name?origin=${origin}&dogName=${dogName}`);
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(
+        `http://localhost:3001/dogs/name?dogName=${dogName}`
+      );
+
+      console.log(JSON.stringify(data))
+      console.log(origin, dogName)
       return dispatch({
         type: GET_DOGS_BY_NAME,
         payload: data,
       });
-    };
-  } catch (error) {
-    console.log(error.message);
-  }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 };
 
-
-export const changePage = (page) =>{
-  return{type: CHANGE_PAGE, payload:page}
-}
+export const changePage = (page) => {
+  return { type: CHANGE_PAGE, payload: page };
+};

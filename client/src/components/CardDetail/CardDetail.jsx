@@ -41,7 +41,7 @@ const CardDetail = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [id, origin]);
 
   return (
     <div className={s["dog-details"]}>

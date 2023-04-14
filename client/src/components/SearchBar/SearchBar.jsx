@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import s from "./SearchBar.module.css";
-import { getDogByName } from "../../redux/action";
+import { getDogByName, setFilter } from "../../redux/action";
 import { useDispatch } from "react-redux";
 const SearchBar = ({ origin }) => {
   const dispatch = useDispatch();
@@ -11,6 +11,7 @@ const SearchBar = ({ origin }) => {
   };
 
   const clickHandler = () => {
+    dispatch(setFilter(true));
     dispatch(getDogByName(origin, search));
   };
   return (
